@@ -77,6 +77,9 @@ func (hc *Coordinator) handlePrometheusMetrics() http.HandlerFunc {
 
 				for _, partition := range consumerStatus.Partitions {
 
+					if partition.End == nil {
+						continue
+					}
 					labels := map[string]string{
 						"cluster":        cluster,
 						"consumer_group": consumer,
