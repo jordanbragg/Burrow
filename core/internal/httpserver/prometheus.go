@@ -76,9 +76,6 @@ func (hc *Coordinator) handlePrometheusMetrics() http.HandlerFunc {
 				consumerStatusGauge.With(labels).Set(float64(consumerStatus.Status))
 
 				for _, partition := range consumerStatus.Partitions {
-					if partition.Complete < 1.0 {
-						continue
-					}
 
 					labels := map[string]string{
 						"cluster":        cluster,
