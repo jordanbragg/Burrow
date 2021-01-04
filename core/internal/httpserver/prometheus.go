@@ -63,8 +63,7 @@ func (hc *Coordinator) handlePrometheusMetrics() http.HandlerFunc {
 				consumerStatus := getFullConsumerStatus(hc.App, cluster, consumer)
 
 				if consumerStatus == nil ||
-					consumerStatus.Status == protocol.StatusNotFound ||
-					consumerStatus.Complete < 1.0 {
+					consumerStatus.Status == protocol.StatusNotFound {
 					continue
 				}
 
